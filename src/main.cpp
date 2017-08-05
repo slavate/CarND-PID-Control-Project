@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+
 #include <uWS/uWS.h>
 #include <iostream>
 #include "json.hpp"
@@ -101,7 +103,8 @@ int main()
   });
 
   int port = 4567;
-  if (h.listen(port))
+  if (h.listen("127.0.0.1", port)) // for windows
+  //if (h.listen(port)) // for ubuntu
   {
     std::cout << "Listening to port " << port << std::endl;
   }

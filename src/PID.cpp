@@ -17,5 +17,6 @@ void PID::UpdateError(double cte) {
 }
 
 double PID::TotalError() {
+  return 0.0;
 }
 
