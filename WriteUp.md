@@ -7,7 +7,9 @@ Self-Driving Car Engineer Nanodegree Program
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it with 4 coefficients as parameters, Kp, Kd, Ki and max speed: `pid.exe 0.1 10 0.0006 20`. 
+4. Run it with 4 coefficients as parameters, Kp, Kd, Ki and max speed: 
+   **windows** - `pid.exe 0.1 10 0.0006 20`
+   **ubuntu**  - `./pid 0.1 10 0.0006 20`
 
 ## Parameter tuning
 
