@@ -96,7 +96,6 @@ int main(int argc, char *argv[])
           // Control Steering
           pid_steer.UpdateError(cte, htime);
           steer_value = -pid_steer.TotalError();
-          //std::cout << pid_steer.timestep << ": cte = " << cte << "; " << steer_value << "; " << pid_steer.p_error << "; " << pid_steer.d_error << "; " << pid_steer.i_error << std::endl;
 
           if (steer_value > 1.0) {
             steer_value = 1.0;
@@ -111,13 +110,13 @@ int main(int argc, char *argv[])
           }
 
           // DEBUG
-          std::cout << pid_steer.timestep << ";" << pid_steer.error << std::endl;
+          std::cout << pid_steer.timestep << ";" << pid_steer.error << ";" "; " << pid_steer.p_error << "; " << pid_steer.d_error << "; " << pid_steer.i_error << std::endl;
           //std::cout << "##################### " << pid_steer.timestep << " #####################" << std::endl;
           //std::cout << "Kp: " << pid_steer.Kp << " Kd: " << pid_steer.Kd << " Ki:" << pid_steer.Ki << std::endl;
           //std::cout << "CTE: " << cte << " Steering Value: " << steer_value << " Speed: " << speed << std::endl << std::endl;
 
-          // Control Throttle
-          double throttle_cte = speed - max_speed; // constant speed 10.0
+          // Control Throttle using parameter max_speed
+          double throttle_cte = speed - max_speed;
           pid_throttle.UpdateError(throttle_cte, 5);
           throttle_value = -pid_throttle.TotalError();
 
@@ -171,8 +170,8 @@ int main(int argc, char *argv[])
   });
 
   int port = 4567;
-  if (h.listen("127.0.0.1", port)) // for windows
-  //if (h.listen(port)) // for ubuntu
+  //if (h.listen("127.0.0.1", port)) // for windows
+  if (h.listen(port)) // for ubuntu
   {
     std::cout << "Listening to port " << port << std::endl;
   }
